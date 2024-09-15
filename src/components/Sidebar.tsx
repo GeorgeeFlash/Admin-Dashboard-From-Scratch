@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
@@ -5,6 +7,9 @@ import { LucideIcon } from "lucide-react";
 import Logo from "./Logo";
 import sidebarList from "@/data/sidebarList";
 import { Separator } from "./ui/separator";
+import Profile from "./Profile";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 interface ListItemProps {
   name: string;
@@ -22,8 +27,10 @@ function ListItem({ name, icon: Icon, href }: ListItemProps) {
 }
 
 const Sidebar = () => {
+  const pathname = usePathname();
+
   return (
-    <div className="flex flex-col h-screen w-full bg-secondary p-4">
+    <div className="relative flex flex-col h-screen w-full bg-secondary p-4">
       <div className="mt-4 space-y-10">
         <div className="flex justify-center">
           <Logo />
@@ -37,18 +44,25 @@ const Sidebar = () => {
               </h2>
               <div className="p-4 space-y-6">
                 {listItem.items.map((item) => (
-                  <ListItem
-                    name={item.name}
-                    icon={item.icon}
-                    href={item.href}
+                  <div
                     key={item.href}
-                  />
+                    className={cn("", {
+                      "bg-slate-500/10 rounded p-2": pathname === item.href,
+                    })}
+                  >
+                    <ListItem
+                      name={item.name}
+                      icon={item.icon}
+                      href={item.href}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
           ))}
         </div>
       </div>
+      <Profile className="absolute bottom-10 border py-1 px-5 bg-slate-200/45 rounded-lg" />
     </div>
   );
 };
