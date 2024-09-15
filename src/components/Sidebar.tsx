@@ -1,65 +1,55 @@
 import React from "react";
 import Link from "next/link";
-import {
-  LayoutDashboard,
-  Newspaper,
-  Folders,
-  CreditCard,
-  Settings,
-  User,
-} from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
+import Logo from "./Logo";
+import sidebarList from "@/data/sidebarList";
+import { Separator } from "./ui/separator";
+
+interface ListItemProps {
+  name: string;
+  icon: LucideIcon;
+  href: string;
+}
+
+function ListItem({ name, icon: Icon, href }: ListItemProps) {
+  return (
+    <Link href={href} className="flex">
+      <Icon className="mr-2 h-6 w-6" />
+      <span className="text-xl font-semibold">{name}</span>
+    </Link>
+  );
+}
 
 const Sidebar = () => {
   return (
-    <Command className="bg-secondary rounded-none">
-      <CommandInput placeholder="Type a command or search..." />
-      <CommandList>
-        <CommandEmpty>No result found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>
-            <LayoutDashboard className="mr-2 h-4 w-4" />
-            <Link href={"/"}>Dashboard</Link>
-          </CommandItem>
-          <CommandItem>
-            <Newspaper className="mr-2 h-4 w-4" />
-            <Link href={"/posts"}>Posts</Link>
-          </CommandItem>
-          <CommandItem>
-            <Folders className="mr-2 h-4 w-4" />
-            <Link href={"/"}>Categories</Link>
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Settings">
-          <CommandItem>
-            <User className="mr-2 h-4 w-4" />
-            <span className="">Profile</span>
-            <CommandShortcut>Ctrl P</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span className="">Billing</span>
-            <CommandShortcut>Ctrl B</CommandShortcut>
-          </CommandItem>
-          <CommandItem>
-            <Settings className="mr-2 h-4 w-4" />
-            <span className="">Settings</span>
-            <CommandShortcut>Ctrl S</CommandShortcut>
-          </CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </Command>
+    <div className="flex flex-col h-screen w-full bg-secondary p-4">
+      <div className="mt-4 space-y-10">
+        <div className="flex justify-center">
+          <Logo />
+        </div>
+        <Separator className="dark:border-slate-300 border" />
+        <div className="h-full w-full space-y-8">
+          {sidebarList.map((listItem) => (
+            <div className="" key={listItem.id}>
+              <h2 className="text-2xl font-bold uppercase text-muted-foreground">
+                {listItem.heading}
+              </h2>
+              <div className="p-4 space-y-6">
+                {listItem.items.map((item) => (
+                  <ListItem
+                    name={item.name}
+                    icon={item.icon}
+                    href={item.href}
+                    key={item.href}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

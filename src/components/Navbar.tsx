@@ -1,8 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { ChevronsRight, LogOut, User2 } from "lucide-react";
 
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,41 +10,47 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import ThemeToggler from "@/components/ThemeToggler";
+import Sidebar from "@/components/Sidebar";
+import Profile from "./Profile";
 
 const Navbar = () => {
   return (
-    <div className="bg-primary dark:bg-slate-700 py-2 px-5 flex justify-between items-center text-white">
-      <Link href={"/"}>
-        <Image
-          src={"/assets/logo.png"}
-          alt="Admin Dashbard"
-          width={70}
-          height={60}
-        />
-      </Link>
-      <div className="flex items-center">
-        <ThemeToggler />
-        <DropdownMenu>
-          <DropdownMenuTrigger className="focus:outline-none">
-            <Avatar>
-              <AvatarImage src="/assets/profile.png" />
-              <AvatarFallback className="text-black">AD</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link href={"/profile"}>Profile</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href={"/auth"}>Logout</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+    <nav className="bg-secondary py-4 px-5 flex  items-center justify-between text-white overflow-hidden">
+      <div className="flex justify-end w-full">
+        <div className="block md:hidden">
+          <Sheet>
+            <SheetTrigger className="bg-slate-700/80 p-1 border rounded-md">
+              <ChevronsRight className="h-7 w-7" />
+            </SheetTrigger>
+            <SheetContent className="bg-secondary" side={"left"}>
+              <Sidebar />
+            </SheetContent>
+          </Sheet>
+        </div>
+        <div className="flex items-center">
+          <ThemeToggler />
+          <DropdownMenu>
+            <DropdownMenuTrigger className="focus:outline-none">
+              <Profile />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-40 h-32 overflow-hidden">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <User2 className="mr-2 h-6 w-6" />
+                <Link href={"/profile"}>Profile</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-6 w-6" />
+                <Link href={"/auth"}>Logout</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

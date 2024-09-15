@@ -17,11 +17,11 @@ export default function ThemeToggler() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="outline-none focus:outline-none">
         <Button
           variant="outline"
-          size={null}
-          className="bg-slate-700 hover:bg-slate-600 border-0 mr-5 p-2"
+          size={"icon"}
+          className="bg-slate-500/5 text-black dark:bg-slate-200/40 dark:text-white hover:bg-slate-400/70 dark:hover:bg-slate-400 border-0 mr-5 p-2"
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
