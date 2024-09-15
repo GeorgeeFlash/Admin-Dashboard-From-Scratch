@@ -7,10 +7,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <Navbar />
       <div className="flex">
-        <div className="hidden md:block h-screen w-[300px]">
+        <div className="hidden md:block h-screen md:w-[350px] lg:w-[400]">
           <Sidebar />
         </div>
-        <div className="p-5 w-full md:max-w-[1140px]">{children}</div>
+        <div className="p-5 w-full">{children}</div>
       </div>
     </>
   );
