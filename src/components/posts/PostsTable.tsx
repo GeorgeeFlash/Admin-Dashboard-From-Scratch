@@ -29,7 +29,7 @@ const PostsTable = ({ limit, title }: PostsTableProps) => {
 
   return (
     <div className="mt-10">
-      <h3 className="text-2xli mb-4 font-semibold">
+      <h3 className="text-2xl md:text-4xl mb-4 font-semibold">
         {title ? title : "Posts"}
       </h3>
       <Table>

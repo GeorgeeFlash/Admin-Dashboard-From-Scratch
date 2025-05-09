@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDown, LogOut, User2 } from "lucide-react";
 
 import {
@@ -11,19 +13,31 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Profile({ className }: { className?: string }) {
+  const [open, setOpen] = useState<boolean>(false);
+
   return (
     <div className={cn("", className)}>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="focus:outline-none flex items-center justify-center">
+      <DropdownMenu onOpenChange={() => setOpen((prev) => !prev)}>
+        <DropdownMenuTrigger
+          onClick={() => setOpen(true)}
+          className="focus:outline-none flex items-center justify-center"
+        >
           <Avatar>
-            <AvatarImage src="/assets/profile.png" />
-            <AvatarFallback className="text-black">AD</AvatarFallback>
+            <AvatarImage src="/assets/profile.jpg" />
+            <AvatarFallback className="text-black dark:text-white font-medium">
+              MP
+            </AvatarFallback>
           </Avatar>
-          <div className="flex text-slate-900 dark:text-white items-center justify-center ml-2 space-x-1">
-            <span className="font-semibold">Micheal</span>
-            <ChevronDown />
+          <div className="flex text-white items-center justify-center ml-2 space-x-1">
+            <span className="font-semibold">Miceal</span>
+            <ChevronDown
+              className={cn("", {
+                "rotate-180 transition-all duration 300": open,
+              })}
+            />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent

@@ -3,7 +3,7 @@ import { AnalyticsItem } from "@/types/analytics";
 const data: AnalyticsItem[] = [
   {
     name: "Jan",
-    uv: 4000,
+    uv: 4700,
     pv: 2400,
     amt: 2400,
   },

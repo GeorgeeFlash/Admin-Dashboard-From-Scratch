@@ -35,19 +35,22 @@ const Sidebar = () => {
         <div className="flex justify-center">
           <Logo />
         </div>
-        <Separator className="dark:border-slate-300 border" />
+        <Separator className="dark:bg-slate-100 h-[2px]" />
         <div className="h-full w-full space-y-8">
           {sidebarList.map((listItem) => (
             <div className="" key={listItem.id}>
               <h2 className="text-2xl font-bold uppercase text-muted-foreground">
                 {listItem.heading}
               </h2>
-              <div className="p-4 space-y-6">
+              <div className="space-y-4 mt-2">
                 {listItem.items.map((item) => (
                   <div
                     key={item.href}
-                    className={cn("", {
-                      "bg-slate-500/10 rounded p-2": pathname === item.href,
+                    className={cn("p-2 rounded-md", {
+                      "bg-slate-400/70 dark:bg-slate-400/80":
+                        pathname === item.href,
+                      "hover:bg-slate-400/30 hover:dark:bg-slate-200/20":
+                        pathname !== item.href,
                     })}
                   >
                     <ListItem
@@ -62,7 +65,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
-      <Profile className="absolute bottom-10 border py-1 px-5 bg-slate-200/45 rounded-lg" />
+      <Profile className="absolute bottom-10 border p-2 bg-slate-300/90 dark:bg-slate-200/20 rounded-lg" />
     </div>
   );
 };
