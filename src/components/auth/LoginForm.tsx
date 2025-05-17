@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   email: z
@@ -49,10 +50,18 @@ const LoginForm = () => {
     },
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 ">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    });
     router.push("/");
   };
+
   return (
     <Card>
       <CardHeader>
@@ -72,12 +81,12 @@ const LoginForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="uppercase text-xl font-bold text-zinc-500 dark:text-white">
+                  <FormLabel className="uppercase text-sm md:text-xl font-bold text-zinc-500 dark:text-white">
                     Email
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible:ring-offset-0"
+                      className="bg-slate-100 dark:bg-slate-500/20 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible:ring-offset-0"
                       placeholder="Enter Email"
                       {...field}
                     />
@@ -91,13 +100,14 @@ const LoginForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="uppercase text-xl font-bold text-zinc-500 dark:text-white">
+                  <FormLabel className="uppercase text-sm md:text-xl font-bold text-zinc-500 dark:text-white">
                     Password
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible:ring-offset-0"
+                      className="bg-slate-100 dark:bg-slate-500/20 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible:ring-offset-0"
                       placeholder="Enter Password"
+                      type="password"
                       {...field}
                     />
                   </FormControl>

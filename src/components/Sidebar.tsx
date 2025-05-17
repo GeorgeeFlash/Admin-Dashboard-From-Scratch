@@ -19,9 +19,9 @@ interface ListItemProps {
 
 function ListItem({ name, icon: Icon, href }: ListItemProps) {
   return (
-    <Link href={href} className="flex">
+    <Link href={href} className="flex text-slate-700 dark:text-white">
       <Icon className="mr-2 h-6 w-6" />
-      <span className="text-xl font-semibold">{name}</span>
+      <span className="text-sm xl:text-lg font-semibold">{name}</span>
     </Link>
   );
 }
@@ -35,11 +35,11 @@ const Sidebar = () => {
         <div className="flex justify-center">
           <Logo />
         </div>
-        <Separator className="dark:bg-slate-100 h-[2px]" />
+        <Separator className="dark:bg-slate-950/80 h-[1px]" />
         <div className="h-full w-full space-y-8">
           {sidebarList.map((listItem) => (
             <div className="" key={listItem.id}>
-              <h2 className="text-2xl font-bold uppercase text-muted-foreground">
+              <h2 className="text-xl xl:text-2xl font-bold uppercase text-muted-foreground">
                 {listItem.heading}
               </h2>
               <div className="space-y-4 mt-2">
@@ -47,9 +47,9 @@ const Sidebar = () => {
                   <div
                     key={item.href}
                     className={cn("p-2 rounded-md", {
-                      "bg-slate-400/70 dark:bg-slate-200/20":
+                      "bg-slate-400/35 dark:bg-slate-950/70":
                         pathname === item.href,
-                      "hover:bg-slate-400/30 hover:dark:bg-slate-200/10":
+                      "hover:bg-slate-400/20 hover:dark:bg-slate-200/10":
                         pathname !== item.href,
                     })}
                   >
