@@ -65,7 +65,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
-      <Profile className="hidden lg:absolute bottom-10 border p-2 bg-slate-300/90 dark:bg-slate-200/20 rounded-lg" />
+      <Profile className="hidden lg:hidden lg:absolute bottom-10 border p-2 bg-slate-300/90 dark:bg-slate-200/20 rounded-lg" />
     </div>
   );
 };
