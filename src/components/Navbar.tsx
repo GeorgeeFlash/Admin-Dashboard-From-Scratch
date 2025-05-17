@@ -22,7 +22,6 @@ const Navbar = () => {
       <div className="flex justify-end w-full">
         <div className="flex items-center">
           <ThemeToggler />
-          <Profile />
         </div>
       </div>
     </nav>
