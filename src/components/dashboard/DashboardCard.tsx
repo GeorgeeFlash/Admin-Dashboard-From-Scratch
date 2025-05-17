@@ -16,7 +16,7 @@ const DashboardCard = ({ title, count, icon: Icon }: DashboardCardProps) => {
       </CardTitle>
       <CardContent>
         <div className="flex gap-5 justify-center items-center">
-          <Icon className="text-slate-500" size={72} />
+          <Icon className="text-slate-500" size={70} />
           <h3 className="text-5xl font-semibold text-slate-500 dark:text-white">
             {count}
           </h3>
