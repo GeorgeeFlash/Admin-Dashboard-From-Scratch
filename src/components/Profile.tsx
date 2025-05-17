@@ -32,7 +32,7 @@ export default function Profile({ className }: { className?: string }) {
             </AvatarFallback>
           </Avatar>
           <div className="flex text-white items-center justify-center ml-2 space-x-1">
-            <span className="font-semibold">Miceal</span>
+            <span className="font-semibold text-black dark:text-white">Miceal</span>
             <ChevronDown
               className={cn("", {
                 "rotate-180 transition-all duration 300": open,
