@@ -47,9 +47,9 @@ const Sidebar = () => {
                   <div
                     key={item.href}
                     className={cn("p-2 rounded-md", {
-                      "bg-slate-400/70 dark:bg-slate-400/80":
+                      "bg-slate-400/70 dark:bg-slate-200/20":
                         pathname === item.href,
-                      "hover:bg-slate-400/30 hover:dark:bg-slate-200/20":
+                      "hover:bg-slate-400/30 hover:dark:bg-slate-200/10":
                         pathname !== item.href,
                     })}
                   >
@@ -65,7 +65,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
-      <Profile className="absolute bottom-10 border p-2 bg-slate-300/90 dark:bg-slate-200/20 rounded-lg" />
+      <Profile className="hidden lg:absolute bottom-10 border p-2 bg-slate-300/90 dark:bg-slate-200/20 rounded-lg" />
     </div>
   );
 };
